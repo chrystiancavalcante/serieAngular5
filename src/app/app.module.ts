@@ -12,6 +12,7 @@ import { EstoqueComponent } from './system/estoque/estoque.component';
 import { SystemService } from './system.service';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { MessageService } from './message.service';
     LoginComponent,
     VendaComponent,
     EstoqueComponent,
-    MessagesComponent
+    MessagesComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,

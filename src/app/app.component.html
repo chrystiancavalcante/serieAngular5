@@ -1,9 +1,12 @@
-
-
 <nav class="navbar navbar-dark bg-dark sticky-top flex-md-nowrap p-0">
   <a class="navbar-brand align-center col-sm-3 col-md-2 mr-0" href="#">
       <img src="assets/images/logo.png" class="displayed" width="50" height="40">
   </a>
+  <nav>
+    <a routerLink="/dashboard">Dashboard</a>
+    <a routerLink="/about">About</a>
+  </nav>
+  <router-outlet></router-outlet>
  
   <ul class="navbar-nav px-3">
       <li class="nav-item text-nowrap">

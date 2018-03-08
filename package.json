@@ -1,7 +1,8 @@
 {
-  "name": "projeto-angular4",
+  "name": "Serie Angular5",
   "version": "0.0.0",
   "license": "MIT",
+  "autor": "Chrystian Cavalcante",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

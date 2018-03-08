@@ -9,6 +9,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './login/login.component';
 import { VendaComponent } from './system/venda/venda.component';
 import { EstoqueComponent } from './system/estoque/estoque.component';
+import { SystemService } from './system.service';
+import { MessagesComponent } from './messages/messages.component';
+import { MessageService } from './message.service';
 
 
 @NgModule({
@@ -18,13 +21,14 @@ import { EstoqueComponent } from './system/estoque/estoque.component';
     HomeComponent,
     LoginComponent,
     VendaComponent,
-    EstoqueComponent
+    EstoqueComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [SystemService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

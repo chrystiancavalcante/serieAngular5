@@ -10,11 +10,14 @@ import { AboutComponent } from './pages/about/about.component';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './login/login.component';
 import { VendaComponent } from './system/venda/venda.component';
+import { CadastroComponent } from './system/cadastro/cadastro.component';
 import { EstoqueComponent } from './system/estoque/estoque.component';
 import { SystemService } from './system.service';
 import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './message.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TopoAppComponent } from './topo-app/topo-app.component';
+import { MenuComponent } from './menu/menu.component';
 
 
 @NgModule({
@@ -23,10 +26,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AboutComponent,
     HomeComponent,
     LoginComponent,
+    CadastroComponent,
     VendaComponent,
     EstoqueComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    TopoAppComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule,

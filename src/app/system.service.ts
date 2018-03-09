@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MessageService} from './message.service'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { CadastroComponent } from './system/cadastro/cadastro.component';
 import { Observable } from 'rxjs/Observable';
 import { Cadastro} from './cadastro'
 
@@ -63,7 +62,7 @@ export class SystemService {
     }
   
     addcadastro (cadastro: Cadastro): Observable<Cadastro> {
-      return this.http.post<Cadastro>(this.CadastroUrl, cadastro, httpOptions).pipe(
+      return this.http.post<Cadastro>(this.CadastroUrl, Cadastro, httpOptions).pipe(
         tap((cadastro: Cadastro) => this.log(`added cadastro w/ id=${cadastro.id}`)),
         catchError(this.handleError<Cadastro>('addcadastro'))
       );
@@ -71,7 +70,7 @@ export class SystemService {
   
     deletecadastro (cadastro: Cadastro | number): Observable<Cadastro> {
       const id = typeof cadastro === 'number' ? cadastro : cadastro.id;
-      const url = `${this.SystemUrl}/${id}`;
+      const url = `${this.CadastroUrl}/${id}`;
   
       return this.http.delete<Cadastro>(url, httpOptions).pipe(
         tap(_ => this.log(`deleted cadastro id=${id}`)),
@@ -80,7 +79,7 @@ export class SystemService {
     }
   
     updatecadastro (cadastro: Cadastro): Observable<any> {
-      return this.http.put(this.SystemUrl, cadastro, httpOptions).pipe(
+      return this.http.put(this.CadastroUrl, cadastro, httpOptions).pipe(
         tap(_ => this.log(`updated cadastro id=${cadastro.id}`)),
         catchError(this.handleError<any>('updatecadastro'))
       );
@@ -104,7 +103,7 @@ export class SystemService {
   
   
     private log(message: string) {
-      this.messageService.add('Systemervice: ' + message);
+      this.messageService.add('SystemService: ' + message);
     }
   }
   

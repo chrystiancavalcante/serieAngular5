@@ -28,7 +28,7 @@
 
           </thead>
           <tbody>
-              <tr *ngFor=" let cadastro of cadastros" (click)="onSelect(cadastro)">
+              <tr *ngFor=" let cadastro of cadastro" (click)="onSelect(cadastro)">
                   <td>
                      
                           <input type="checkbox" ng-model="cadastro.selecionado"/>
@@ -41,7 +41,7 @@
                   <td>
                       
                           <a href="" data-toggle="modal" data-target="#edit" ng-click="edit(cadastro, $index)">
-                          <img src="glyphicons/glyphicons/png/glyphicons-31-pencil.png">
+                          <img src="assets/glyphicons/glyphicons/png/glyphicons-31-pencil.png">
                           </a>
                       
                   </td>

@@ -17,13 +17,13 @@ export class SystemService {
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
-     
-    private CadastroUrl = 'api/cadastro';  
+    private messageService: MessageService) {}
+    
+    private cadastroUrl = 'api/cadastro';  
 
     
     getCadastro (): Observable<Cadastro[]> {
-      return this.http.get<Cadastro[]>(this.CadastroUrl)
+      return this.http.get<Cadastro[]>(this.cadastroUrl)
         .pipe(
           tap(Cadastro => this.log(`fetched Cadastro`)),
           catchError(this.handleError('getCadastro', []))
@@ -32,7 +32,7 @@ export class SystemService {
   
     
     getCadastroNo404<Data>(id: number): Observable<Cadastro> {
-      const url = `${this.CadastroUrl}/?id=${id}`;
+      const url = `${this.cadastroUrl}/?id=${id}`;
       return this.http.get<Cadastro[]>(url)
         .pipe(
           map(Cadastro => Cadastro[0]), 
@@ -45,7 +45,7 @@ export class SystemService {
     }
   
     getcadastro(id: number): Observable<Cadastro> {
-      const url = `${this.CadastroUrl}/${id}`;
+      const url = `${this.cadastroUrl}/${id}`;
       return this.http.get<Cadastro>(url).pipe(
         tap(_ => this.log(`fetched cadastro id=${id}`)),
         catchError(this.handleError<Cadastro>(`getcadastro id=${id}`))
@@ -64,7 +64,7 @@ export class SystemService {
     }
   
     addcadastro (cadastro: Cadastro): Observable<Cadastro> {
-      return this.http.post<Cadastro>(this.CadastroUrl, Cadastro, httpOptions).pipe(
+      return this.http.post<Cadastro>(this.cadastroUrl, Cadastro, httpOptions).pipe(
         tap((cadastro: Cadastro) => this.log(`added cadastro w/ id=${cadastro.id}`)),
         catchError(this.handleError<Cadastro>('addcadastro'))
       );
@@ -72,7 +72,7 @@ export class SystemService {
   
     deletecadastro (cadastro: Cadastro | number): Observable<Cadastro> {
       const id = typeof cadastro === 'number' ? cadastro : cadastro.id;
-      const url = `${this.CadastroUrl}/${id}`;
+      const url = `${this.cadastroUrl}/${id}`;
   
       return this.http.delete<Cadastro>(url, httpOptions).pipe(
         tap(_ => this.log(`deleted cadastro id=${id}`)),
@@ -81,7 +81,7 @@ export class SystemService {
     }
   
     updatecadastro (cadastro: Cadastro): Observable<any> {
-      return this.http.put(this.CadastroUrl, cadastro, httpOptions).pipe(
+      return this.http.put(this.cadastroUrl, cadastro, httpOptions).pipe(
         tap(_ => this.log(`updated cadastro id=${cadastro.id}`)),
         catchError(this.handleError<any>('updatecadastro'))
       );

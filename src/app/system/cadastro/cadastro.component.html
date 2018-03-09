@@ -4,23 +4,23 @@
       <h1 id="h1">Cadastro</h1>
   </div>
   <div class="table-responsive">
-      <input class="form-control bg-dark" id="busca" type="text" ng-model="criterioDeBusca" placeholder="O que você está buscando?" />
-      <br>
+  <app-pesquisa></app-pesquisa>
+    <br>
       <table ng-show="cadastros.length > 0" class="table table-striped table-dark table-sm">
           <thead>
               <tr>
-                  <th></th>
+                  
                   <th>Nome</th>
                   <th>
-                      <a href="" ng-click="ordenarPor('nome')">
+                      <a href="" >
                           <img src="assets/glyphicons/glyphicons/png/glyphicons-409-sort-by-attributes.png">
                       </a> Bairro</th>
                   <th>
-                      <a href="" ng-click="ordenarPor('cidade')">
+                      <a href="" >
                           <img src="assets/glyphicons/glyphicons/png/glyphicons-404-sorting.png">
                       </a> Cidade</th>
                   <th>
-                      <a href="" ng-click="ordenarPor('uf')">
+                      <a href="" >
                           <img src="assets/glyphicons/glyphicons/png/glyphicons-404-sorting.png">
                       </a> Estado</th>
                   <th></th>
@@ -28,21 +28,18 @@
 
           </thead>
           <tbody>
-              <tr *ngFor=" let cadastro of cadastro" >
-                  <td>
-                     
-                          <input type="checkbox" ng-model="cadastro.selecionado"/>
-                         
-                  </td>
+              <tr  *ngFor=" let cadastro of cadastro" >
+
                   <td>{{cadastro.nome}}</td>
                   <td>{{cadastro.bairro}}</td>
                   <td>{{cadastro.cidade}}</td>
                   <td>{{cadastro.uf}}</td>
-                  <td>
+                  <td  class="delete" title="delete cadastro"
+                  (click)="delete(cadastro)">
                       
-                          <a href="" data-toggle="modal" data-target="#edit" (click)="onSelect(cadastro)">
-                          <img src="assets/glyphicons/glyphicons/png/glyphicons-31-pencil.png">
-                          </a>
+                         
+                          <img src="assets/glyphicons/glyphicons/png/glyphicons-17-bin.png">
+                         
                       
                   </td>
               </tr>
@@ -56,7 +53,7 @@
           <a href="/login">
               <button type="button" class="btn btn-outline-success">+ Incluir</button>
           </a>-->
-         
+          <app-detalhe></app-detalhe>   
 </main>
 <!--=========================================Modal=====================-->
 
@@ -71,7 +68,7 @@
                     <div class="row">
                         <div class="col-8">
                             <label class="for">Nome</label>
-                            <input #cadastroName name="nome" id="nome" type="text" class="form-control" required  ng-minlength="5"
+                            <input #cadastroNome name="nome" id="nome" type="text" class="form-control" required  ng-minlength="5"
                                 placeholder="*Nome">
                         </div>
                         <div class="col-4">
@@ -98,47 +95,12 @@
                     </div>
                     <br>
                 </form>
-                <div ng-show="cadastroForm.nome.$error.required && cadastroForm.nome.$dirty" ng-messages="cadastroForm.nome.$error" class="alert alert-danger">
-                    <div ng-message="required">
-                        Por favor, preencha o campo Nome!
-                    </div>
-                    <div ng-message="minlength">
-                        O campo nome deve ter no mínimo 5 caracteres.
-                    </div>
-                </div>
-                <div ng-show="cadastroForm.rua.$error.required && cadastroForm.rua.$dirty" class="alert alert-danger">
-                    <div ng-message="required">
-                        Por favor, preencha o campo Endereço!
-                    </div>
-                </div>
-                <div ng-show="cadastroForm.cep.$error.required && cadastroForm.cep.$dirty" class="alert alert-danger">
-                    <div ng-message="required">
-                        Por favor, preencha o campo CEP!
-                    </div>
-                </div>
-                <div ng-show="cadastroForm.cep.$error.pattern" class="alert alert-danger">
-                    <div ng-message="required">
-                        O campo CEP deve ter o formato 99999-999.
-                    </div>
-                </div>
-                <div ng-show="cadastroForm.cidade.$error.required && cadastroForm.cidade.$dirty" class="alert alert-danger">
-                    <div ng-message="required">
-                        Por favor, preencha o campo Cidade!
-                    </div>
-                </div>
-                <div ng-show="cadastroForm.uf.$error.required && cadastroForm.uf.$dirty" ng-messages="cadastroForm.uf.$error" class="alert alert-danger">
-                    <div ng-message="required">
-                        Por favor, preencha o campo Estado!
-                    </div>
-                </div>
   
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-outline-success" (click)="add(cadastroName.value); cadastroName.value=''" ng-disabled="cadastroForm.$invalid">Salvar</button>
+                    <button type="button" class="btn btn-outline-success" (click)="add(cadastroForm.value); cadastroForm.value=''">Salvar</button>
                 </div>
-                <label class="small" id="aviso">
-                       OBS: Por favor, preencha todos os campos requeridos (*) pois pode ser que haja divergências nos dados da busca CEP.
-                 </label>
+                <app-messages></app-messages>
             </div>
             
         </div>

@@ -14,10 +14,10 @@ export class SystemService {
     private http: HttpClient,
     private messageService: MessageService) { }
      
-    private SystemUrl = 'api/system';  // URL to web api
+    private SystemUrl = 'api/system';  
 
-    /** GET System from the server */
-    getCadastro (): Observable<System[]> {
+    
+    getSystem (): Observable<System[]> {
       return this.http.get<System[]>(this.SystemUrl)
         .pipe(
           tap(System => this.log(`fetched System`)),
@@ -25,12 +25,12 @@ export class SystemService {
         );
     }
   
-    /** GET cadastro by id. Return `undefined` when id not found */
+    
     getcadastroNo404<Data>(id: number): Observable<cadastro> {
       const url = `${this.SystemUrl}/?id=${id}`;
       return this.http.get<cadastro[]>(url)
         .pipe(
-          map(System => System[0]), // returns a {0|1} element array
+          map(System => System[0]), 
           tap(h => {
             const outcome = h ? `fetched` : `did not find`;
             this.log(`${outcome} cadastro id=${id}`);
@@ -39,7 +39,6 @@ export class SystemService {
         );
     }
   
-    /** GET cadastro by id. Will 404 if id not found */
     getcadastro(id: number): Observable<cadastro> {
       const url = `${this.SystemUrl}/${id}`;
       return this.http.get<cadastro>(url).pipe(
@@ -47,11 +46,10 @@ export class SystemService {
         catchError(this.handleError<cadastro>(`getcadastro id=${id}`))
       );
     }
-  
-    /* GET System whose name contains search term */
+ 
     searchSystem(term: string): Observable<cadastro[]> {
       if (!term.trim()) {
-        // if not search term, return empty cadastro array.
+      
         return of([]);
       }
       return this.http.get<cadastro[]>(`api/System/?name=${term}`).pipe(
@@ -60,9 +58,6 @@ export class SystemService {
       );
     }
   
-    //////// Save methods //////////
-  
-    /** POST: add a new cadastro to the server */
     addcadastro (cadastro: cadastro): Observable<cadastro> {
       return this.http.post<cadastro>(this.SystemUrl, cadastro, httpOptions).pipe(
         tap((cadastro: cadastro) => this.log(`added cadastro w/ id=${cadastro.id}`)),
@@ -70,7 +65,6 @@ export class SystemService {
       );
     }
   
-    /** DELETE: delete the cadastro from the server */
     deletecadastro (cadastro: cadastro | number): Observable<cadastro> {
       const id = typeof cadastro === 'number' ? cadastro : cadastro.id;
       const url = `${this.SystemUrl}/${id}`;
@@ -81,7 +75,6 @@ export class SystemService {
       );
     }
   
-    /** PUT: update the cadastro on the server */
     updatecadastro (cadastro: cadastro): Observable<any> {
       return this.http.put(this.SystemUrl, cadastro, httpOptions).pipe(
         tap(_ => this.log(`updated cadastro id=${cadastro.id}`)),
@@ -89,27 +82,24 @@ export class SystemService {
       );
     }
   
-    /**
-     * Handle Http operation that failed.
-     * Let the app continue.
-     * @param operation - name of the operation that failed
-     * @param result - optional value to return as the observable result
-     */
+   
+    
+     @param operation 
+     @param result 
     private handleError<T> (operation = 'operation', result?: T) {
       return (error: any): Observable<T> => {
   
-        // TODO: send the error to remote logging infrastructure
-        console.error(error); // log to console instead
+        console.error(error);
   
-        // TODO: better job of transforming error for user consumption
+       
         this.log(`${operation} failed: ${error.message}`);
   
-        // Let the app keep running by returning an empty result.
+      
         return of(result as T);
       };
     }
   
-    /** Log a Systemervice message with the MessageService */
+  
     private log(message: string) {
       this.messageService.add('Systemervice: ' + message);
     }

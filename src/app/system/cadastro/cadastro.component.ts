@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Cadastro } from '../../cadastro';
+import { SystemService } from '../../system.service';
 
 
 @Component({
@@ -7,10 +9,36 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cadastro.component.css']
 })
 export class CadastroComponent implements OnInit {
+  
+  cadastro: Cadastro[];
 
-  constructor() { }
+  constructor(private systemService: SystemService) { 
+
+  }
 
   ngOnInit() {
+    this.getCadastro();
   }
- 
+  
+  getCadastro(): void {
+    this.systemService.getCadastro()
+    .subscribe(cadastro => this.cadastro = cadastro);
+  }
+
+  add(name: string): void {
+    name = name.trim();
+    if (!name) { return; }
+    this.systemService.addcadastro({ name } as Cadastro)
+      .subscribe(cadastro => {
+        this.cadastro.push(cadastro);
+      });
+  }
+
+  delete(cadastro: Cadastro): void {
+    this.cadastro = this.cadastro.filter(h => h !== cadastro);
+    this.systemService.deletecadastro(cadastro).subscribe();
+  }
+
 }
+ 
+

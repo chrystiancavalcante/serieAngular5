@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MessageService} from './message.service'
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { Cadastro} from './cadastro'
+import { Cadastro } from './cadastro'
 
 
 

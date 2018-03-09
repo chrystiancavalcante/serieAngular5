@@ -9,7 +9,7 @@ import { VendaComponent} from './system/venda/venda.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'about', component: AboutComponent },
   { path: 'home', component: HomeComponent },

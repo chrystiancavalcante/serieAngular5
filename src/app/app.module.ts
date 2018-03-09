@@ -33,7 +33,7 @@ import { MenuComponent } from './menu/menu.component';
     MessagesComponent,
     DashboardComponent,
     TopoAppComponent,
-    MenuComponent
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

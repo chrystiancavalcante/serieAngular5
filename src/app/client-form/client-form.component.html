@@ -9,7 +9,7 @@
           <div class="row">
             <div class="col-8">
               <label class="for">Nome</label>
-              <input [(ngModel)]="model.nome" name="nome" value="nome" id="nome" type="text" class="form-control" required placeholder="Nome" #nome="ngModel">
+              <input [(ngModel)]="model.nome" name="nome" value="nome" id="nome" type="text" class="form-control" required  placeholder="Nome" #nome="ngModel">
               <div [hidden]="nome.valid || nome.pristine" class="alert alert-danger">
                 O Nome é necessário.
               </div>
@@ -40,7 +40,7 @@
             </div>
             <div class="col-12">
               <label class="for">Endereço</label>
-              <input [(ngModel)]="model.endereco" name="rua" id="rua" size="60" type="text" value="rua" class="form-control input" id="rua" size="60"
+              <input [(ngModel)]="model.endereco" name="rua" id="rua" size="60" type="text" value="endereco" class="form-control input" id="rua" size="60"
                 placeholder="Endereço" required #endereco="ngModel">
               <div [hidden]="endereco.valid || endereco.pristine" class="alert alert-danger">
                 O Endereço é necessário.
@@ -51,8 +51,8 @@
         </form>
 
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-danger" data-dismiss="modal" (click)="close()">Cancelar</button>
-          <button type="submit" class="btn btn-outline-success" (click)="add(cadastro.value)" [disabled]="!clientForm.form.valid">Salvar</button>
+          <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
+          <button type="submit" class="btn btn-outline-success" (click)="add(cadastro.value); cadastro.value=''" [disabled]="!clientForm.form.valid">Salvar</button>
         </div>
       </div>
     </div>

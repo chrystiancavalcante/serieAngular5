@@ -6,10 +6,10 @@
   <div class="table-responsive">
   <app-pesquisa></app-pesquisa>
     <br>
-      <table ng-show="cadastros.length > 0" class="table table-striped table-dark table-sm">
+      <table ngShow="cadastros.length > 0" class="table table-striped table-dark table-sm">
           <thead>
               <tr>
-                  
+                  <th>Id</th>
                   <th>Nome</th>
                   <th>
                       <a href="" >
@@ -28,19 +28,17 @@
 
           </thead>
           <tbody>
-              <tr  *ngFor=" let cadastro of cadastro" >
-
+              <tr *ngFor=" let cadastro of cadastro">
+                  <td>{{cadastro.id}}</td>
                   <td>{{cadastro.nome}}</td>
                   <td>{{cadastro.bairro}}</td>
                   <td>{{cadastro.cidade}}</td>
                   <td>{{cadastro.uf}}</td>
-                  <td  class="delete" title="delete cadastro"
+                  <td class="delete" title="delete cadastro"
                   (click)="delete(cadastro)">
-                      
-                         
-                          <img src="assets/glyphicons/glyphicons/png/glyphicons-17-bin.png">
-                         
-                      
+        
+                    <img src="assets/glyphicons/glyphicons/png/glyphicons-17-bin.png">
+            
                   </td>
               </tr>
           </tbody>
@@ -53,10 +51,12 @@
           <a href="/login">
               <button type="button" class="btn btn-outline-success">+ Incluir</button>
           </a>-->
-          <app-detalhe></app-detalhe>   
+          
+   
 </main>
-<!--=========================================Modal=====================-->
 
+
+<!--=========================================Modal=====================-->
 <div class="modal fade bd-modal-lg" id="Modal" tabindex="-1" role="dialog" aria-labelledby="white" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="form">
         <div class="modal-content">
@@ -94,16 +94,16 @@
                         </div>
                     </div>
                     <br>
+                    
                 </form>
   
                 <div class="modal-footer">
                     <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-outline-success" (click)="add(cadastroForm.value); cadastroForm.value=''">Salvar</button>
+                    <button type="button" class="btn btn-outline-success" (click)="add(cadastro.value); cadastro.value=''">Salvar</button>
                 </div>
-                <app-messages></app-messages>
+                
             </div>
             
         </div>
     </div>
   </div>
-  

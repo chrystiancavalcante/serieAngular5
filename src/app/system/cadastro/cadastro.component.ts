@@ -25,10 +25,10 @@ export class CadastroComponent implements OnInit {
     .subscribe(cadastro => this.cadastro = cadastro);
   }
 
-  add(name: string): void {
-    name = name.trim();
-    if (!name) { return; }
-    this.systemService.addcadastro({ name } as Cadastro)
+  add(cadastro: string): void {
+    cadastro = cadastro.trim();
+    if (!cadastro) { return; }
+    this.systemService.addcadastro( cadastro as Cadastro )
       .subscribe(cadastro => {
         this.cadastro.push(cadastro);
       });

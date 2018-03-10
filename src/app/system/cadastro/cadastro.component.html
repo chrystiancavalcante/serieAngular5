@@ -1,15 +1,14 @@
 
 <main role="main" class="col-md-9 ml-sm-auto bg-dark col-lg-10 pt-3 px-4">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-      <h1 id="h1">Cadastro</h1>
+      <h1 id="h1">{{ title }}</h1>
   </div>
   <div class="table-responsive">
-  <app-pesquisa></app-pesquisa>
     <br>
-      <table ngShow="cadastros.length > 0" class="table table-striped table-dark table-sm">
+      <table  class="table table-striped table-dark table-sm">
           <thead>
               <tr>
-                  <th>Id</th>
+                 
                   <th>Nome</th>
                   <th>
                       <a href="" >
@@ -29,7 +28,7 @@
           </thead>
           <tbody>
               <tr *ngFor=" let cadastro of cadastro">
-                  <td>{{cadastro.id}}</td>
+                  
                   <td>{{cadastro.nome}}</td>
                   <td>{{cadastro.bairro}}</td>
                   <td>{{cadastro.cidade}}</td>
@@ -45,7 +44,7 @@
       </table>
   </div>
   
-      <button type="button" data-toggle="modal" data-target="#Modal" class="btn btn-outline-success">+ Incluir</button>
+      <button type="button" data-toggle="modal" data-target="#Cliente" class="btn btn-outline-success">+ Incluir</button>
      <!-- <button class="btn btn-outline-danger" ng-click="apagarCadastros(cadastros)" ng-if="isCadastroSelecionado(cadastros)">- Excluir</button>
      
           <a href="/login">
@@ -54,56 +53,8 @@
           
    
 </main>
-
-
 <!--=========================================Modal=====================-->
-<div class="modal fade bd-modal-lg" id="Modal" tabindex="-1" role="dialog" aria-labelledby="white" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="form">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title col-sm-12 ">Cadastro</h1>
-            </div>
-            <div class="modal-body">
-                <form name="cadastroForm" method="get" action=".">
-                    <div class="row">
-                        <div class="col-8">
-                            <label class="for">Nome</label>
-                            <input #cadastroNome name="nome" id="nome" type="text" class="form-control" required  ng-minlength="5"
-                                placeholder="*Nome">
-                        </div>
-                        <div class="col-4">
-                            <label class="for">CEP</label>
-                            <input #cadastroCep name="cep" id="cep" value="" size="10" maxlength="9" class="form-control" type="text" placeholder="*Digite o CEP"
-                            required ng-required="true" ng-pattern="/^\d{5}-\d{3}$/">
-  
-                        </div>
-                        <div class="col-5">
-                            <label class="for">Estado</label>
-                            <input #cadastroUf name= "uf" class="form-control input" id="uf" size="2"  placeholder="*Estado" required >
-  
-                        </div>
-                        <div class="col-7">
-                            <label class="for">Cidade</label>
-                            <input #cadastroCidade name="cidade" id="cidade" size="40" type="text" class="form-control input" id="cidade" size="40" ng-model="cadastro.cidade"
-                            required ng-required="true" placeholder="*Cidade">
-                        </div>
-                        <div class="col-12">
-                            <label class="for">Endereço</label>
-                            <input #cadastroEndereco name="rua" id="rua" size="60" type="text" class="form-control input" id="rua" size="60" ng-model="cadastro.bairro"
-                            required ng-required="true" placeholder="*Endereço">
-                        </div>
-                    </div>
-                    <br>
-                    
-                </form>
-  
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn btn-outline-success" (click)="add(cadastro.value); cadastro.value=''">Salvar</button>
-                </div>
-                
-            </div>
-            
-        </div>
+    <div>
+        <app-client-form></app-client-form>  
     </div>
-  </div>
+

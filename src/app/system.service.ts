@@ -75,7 +75,7 @@ export class SystemService {
     const url = `${this.cadastroUrl}/${id}`;
 
     return this.http.delete<Cadastro>(url, httpOptions).pipe(
-      tap(_ => this.log(`Deletado com Sucesso ! Cadastro id=${id}`)),
+      tap(_ => this.log(`Excluído com Sucesso ! Cadastro id=${id}`)),
       catchError(this.handleError<Cadastro>('deletecadastro'))
     );
   }

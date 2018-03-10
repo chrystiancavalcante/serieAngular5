@@ -9,7 +9,8 @@ import { SystemService } from '../../system.service';
   styleUrls: ['./cadastro.component.css']
 })
 export class CadastroComponent implements OnInit {
-  
+  title='Lista de Cliente';
+  titleModal='Cadastrar';
   cadastro: Cadastro[];
 
   constructor(private systemService: SystemService) { 
@@ -23,15 +24,6 @@ export class CadastroComponent implements OnInit {
   getCadastro(): void {
     this.systemService.getCadastro()
     .subscribe(cadastro => this.cadastro = cadastro);
-  }
-
-  add(cadastro: string): void {
-    cadastro = cadastro.trim();
-    if (!cadastro) { return; }
-    this.systemService.addcadastro( cadastro as Cadastro )
-      .subscribe(cadastro => {
-        this.cadastro.push(cadastro);
-      });
   }
 
   delete(cadastro: Cadastro): void {

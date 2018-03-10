@@ -19,8 +19,7 @@ import { MessageService } from './message.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TopoAppComponent } from './topo-app/topo-app.component';
 import { MenuComponent } from './menu/menu.component';
-import { DetalheComponent } from './detalhe/detalhe.component';
-import { PesquisaComponent } from './pesquisa/pesquisa.component';
+import { ClientFormComponent } from './client-form/client-form.component';
 
 
 @NgModule({
@@ -36,8 +35,7 @@ import { PesquisaComponent } from './pesquisa/pesquisa.component';
     DashboardComponent,
     TopoAppComponent,
     MenuComponent,
-    DetalheComponent,
-    PesquisaComponent,
+    ClientFormComponent,
   ],
   imports: [
     BrowserModule,

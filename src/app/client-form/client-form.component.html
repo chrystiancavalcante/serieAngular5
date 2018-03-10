@@ -1,0 +1,60 @@
+<div class="modal fade bd-modal-lg" id="Cliente" tabindex="-1" role="dialog" aria-labelledby="white" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="form">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title col-sm-12 ">{{ title }}</h1>
+      </div>
+      <div class="modal-body">
+        <form #clientForm="ngForm" (ngSubmit)="onSubmit(clientForm)" method="get" action=".">
+          <div class="row">
+            <div class="col-8">
+              <label class="for">Nome</label>
+              <input [(ngModel)]="model.nome" name="nome" value="nome" id="nome" type="text" class="form-control" required placeholder="Nome" #nome="ngModel">
+              <div [hidden]="nome.valid || nome.pristine" class="alert alert-danger">
+                O Nome é necessário.
+              </div>
+            </div>
+
+            <div class="col-4">
+              <label class="for">CEP</label>
+              <input [(ngModel)]="model.cep" name="cep" id="cep" value="cep" size="10" maxlength="9" class="form-control" type="text" placeholder="*Digite o CEP"
+                ng-pattern="/^\d{5}-\d{3}$/" required #cep="ngModel">
+              <div [hidden]="cep.valid || cep.pristine" class="alert alert-danger">
+                O CEP é necessário.
+              </div>
+            </div>
+            <div class="col-5">
+              <label class="for">Estado</label>
+              <input [(ngModel)]="model.uf" name="uf" class="form-control input" value="uf" id="uf" size="2" placeholder="*Estado" required #uf="ngModel">
+              <div [hidden]="uf.valid || uf.pristine" class="alert alert-danger">
+                O Estado é necessário.
+              </div>
+            </div>
+            <div class="col-7">
+              <label class="for">Cidade</label>
+              <input [(ngModel)]="model.cidade" name="cidade" id="cidade" size="40" type="text" value="cidade" class="form-control input" id="cidade"
+                size="40" placeholder="Cidade" required #cidade="ngModel">
+              <div [hidden]="cidade.valid || cidade.pristine" class="alert alert-danger">
+                A Cidade é necessária.
+              </div>
+            </div>
+            <div class="col-12">
+              <label class="for">Endereço</label>
+              <input [(ngModel)]="model.endereco" name="rua" id="rua" size="60" type="text" value="rua" class="form-control input" id="rua" size="60"
+                placeholder="Endereço" required #endereco="ngModel">
+              <div [hidden]="endereco.valid || endereco.pristine" class="alert alert-danger">
+                O Endereço é necessário.
+              </div>
+            </div>
+          </div>
+          <br>
+        </form>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-dismiss="modal" (click)="close()">Cancelar</button>
+          <button type="submit" class="btn btn-outline-success" (click)="add(cadastro.value)" [disabled]="!clientForm.form.valid">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

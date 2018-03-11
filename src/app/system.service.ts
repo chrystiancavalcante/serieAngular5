@@ -64,7 +64,7 @@ export class SystemService {
   }
 
   addcadastro(cadastro: Cadastro): Observable<Cadastro> {
-    return this.http.post<Cadastro>(this.cadastroUrl, Cadastro, httpOptions).pipe(
+    return this.http.post<Cadastro>(this.cadastroUrl, cadastro, httpOptions).pipe(
       tap((cadastro: Cadastro) => this.log(`Cadastro com Sucesso! id=${cadastro.id}`)),
       catchError(this.handleError<Cadastro>('addcadastro'))
     );

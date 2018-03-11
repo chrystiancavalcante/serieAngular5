@@ -57,7 +57,7 @@ import { HttpClientXsrfModule } from '@angular/common/http';
         InMemoryDataService, {
           dataEncapsulation: false,
           passThruUnknownUrl: true,
-          put204: false // return entity after PUT/update
+          put204: false 
         }
       )
   ],

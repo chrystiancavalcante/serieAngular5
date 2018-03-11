@@ -32,7 +32,7 @@ export class CadastroComponent implements OnInit {
   add(nome: string): void {
     this.getCadastro= undefined;
     nome = nome.trim();
-    if (!name) { return; }
+    if (!nome) { return; }
 
     const newCadastro: Cadastro = { nome } as Cadastro;
     this.cadastroService.addCadastro(newCadastro)

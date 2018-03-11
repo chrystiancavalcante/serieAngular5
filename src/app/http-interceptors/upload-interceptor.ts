@@ -34,9 +34,7 @@ function createUploadEvents(delay: number) {
     uploadLoop(0);
 
     function uploadLoop(loaded: number) {
-      // N.B.: Cannot use setInterval or rxjs delay (which uses setInterval)
-      // because e2e test won't complete. A zone thing?
-      // Use setTimeout and tail recursion instead.
+     
         setTimeout(() => {
           loaded += chunkSize;
 

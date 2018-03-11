@@ -1,4 +1,4 @@
-export class Client {
+export interface Client {
     id: number;
     nome: string;
     rua: string;

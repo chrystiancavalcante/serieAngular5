@@ -1,4 +1,4 @@
-export class Cadastro {
+export interface Cadastro {
     id: number;
     nome: string;
     rua: string;

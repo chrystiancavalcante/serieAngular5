@@ -5,11 +5,11 @@
         <h1 class="modal-title col-sm-12 ">{{ title }}</h1>
       </div>
       <div class="modal-body">
-        <form #clientForm="ngForm" (ngSubmit)="onSubmit(clientForm)" method="get" action=".">
+        <form #cadastroForm="ngForm" (ngSubmit)="onSubmit(cadastroForm)" method="get" action=".">
           <div class="row">
             <div class="col-8">
               <label class="for">Nome</label>
-              <input [(ngModel)]="model.nome" name="nome" value="nome" id="nome" type="text" class="form-control" required  placeholder="Nome" #nome="ngModel">
+              <input [(ngModel)]="model.nome" name="nome" value="nome" id="nome" type="text" class="form-control" required  placeholder="Nome" #clientNome="ngModel">
               <div [hidden]="nome.valid || nome.pristine" class="alert alert-danger">
                 O Nome é necessário.
               </div>
@@ -52,7 +52,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
-          <button type="submit" class="btn btn-outline-success" (click)="add(clientForm.value); clientForm.value=''" [disabled]="!clientForm.form.valid">Salvar</button>
+          <button type="submit" class="btn btn-outline-success" (click)="add(cadastroForm.value); cadastroForm.value=''" [disabled]="!cadastroForm.form.valid">Salvar</button>
         </div>
       </div>
     </div>

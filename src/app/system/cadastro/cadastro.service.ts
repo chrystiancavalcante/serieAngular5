@@ -32,7 +32,7 @@ export class CadastroService {
   getCadastro (): Observable<Cadastro[]> {
     return this.http.get<Cadastro[]>(this.cadastroUrl)
       .pipe(
-        catchError(this.handleError('getClient', []))
+        catchError(this.handleError('getCadastro', []))
       );
   }
 

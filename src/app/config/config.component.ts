@@ -24,8 +24,8 @@ export class ConfigComponent {
   showConfig() {
     this.configService.getConfig()
       .subscribe(
-        data => this.config = { ...data }, // success path
-        error => this.error = error // error path
+        data => this.config = { ...data }, 
+        error => this.error = error
       );
   }
 
@@ -39,20 +39,16 @@ export class ConfigComponent {
 
   showConfig_v2() {
     this.configService.getConfig()
-      // clone the data object, using its known Config shape
       .subscribe(data => this.config = { ...data });
   }
 
   showConfigResponse() {
     this.configService.getConfigResponse()
-      // resp is of type `HttpResponse<Config>`
       .subscribe(resp => {
-        // display its headers
         const keys = resp.headers.keys();
         this.headers = keys.map(key =>
           `${key}: ${resp.headers.get(key)}`);
 
-        // access the body directly, which is typed as `Config`.
         this.config = { ... resp.body };
       });
   }

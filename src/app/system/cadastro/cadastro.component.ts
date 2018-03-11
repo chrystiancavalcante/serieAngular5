@@ -1,19 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Cadastro } from '../../cadastro';
-import { SystemService } from '../../system.service';
+import { CadastroService } from './cadastro.service';
 
 
 @Component({
   selector: 'app-cadastro',
   templateUrl: './cadastro.component.html',
+  providers: [ CadastroService ],
   styleUrls: ['./cadastro.component.css']
 })
 export class CadastroComponent implements OnInit {
+  [x: string]: any;
   
-  cadastro: Cadastro[]
+  Cadastro: Cadastro[]
+  editCadastro: Cadastro;
   title= "Lista de Clientes"
 
-  constructor(private systemService: SystemService) { 
+  constructor(private cadastroService: CadastroService) { 
 
   }
 
@@ -22,24 +25,24 @@ export class CadastroComponent implements OnInit {
   }
   
   getCadastro(): void {
-    this.systemService.getCadastro()
+    this.cadastroService.getCadastro()
     .subscribe(cadastro => this.cadastro = cadastro);
   }
 
-  add(cadastro: string): void {
-    cadastro = cadastro.trim();
-    if (!cadastro) { return; }
-    this.systemService.addcadastro( cadastro as Cadastro )
-      .subscribe(cadastro => {
-        this.cadastro.push(cadastro);
-      });
+  add(nome: string): void {
+    this.getCadastro= undefined;
+    nome = nome.trim();
+    if (!name) { return; }
+
+    const newCadastro: Cadastro = { nome } as Cadastro;
+    this.cadastroService.addCadastro(newCadastro)
+      .subscribe(cadastro => this.Cadastro.push(cadastro));
   }
 
   delete(cadastro: Cadastro): void {
-    this.cadastro = this.cadastro.filter(h => h !== cadastro);
-    this.systemService.deletecadastro(cadastro).subscribe();
-  }
+    this.Cadastro = this.Cadastro.filter(h => h !== cadastro);
+    this.cadastroService.deleteCadastro(cadastro.id).subscribe();
 
 }
  
-
+}

@@ -57,7 +57,7 @@ export class SystemService {
 
       return of([]);
     }
-    return this.http.get<Cadastro[]>(`api/Cadastro/?name=${term}`).pipe(
+    return this.http.get<Cadastro[]>(`api/Cadastro/?nome=${term}`).pipe(
       tap(_ => this.log(`Encontrado Cadastro Correspondente "${term}"`)),
       catchError(this.handleError<Cadastro[]>('searchCadastro', []))
     );

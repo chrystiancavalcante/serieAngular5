@@ -52,7 +52,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Cancelar</button>
-          <button type="submit" class="btn btn-outline-success" (click)="add(cadastro.value); cadastro.value=''" [disabled]="!clientForm.form.valid">Salvar</button>
+          <button type="submit" class="btn btn-outline-success" (click)="add(clientForm.value); clientForm.value=''" [disabled]="!clientForm.form.valid">Salvar</button>
         </div>
       </div>
     </div>

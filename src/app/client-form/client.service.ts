@@ -30,29 +30,29 @@ export class ClientService {
     this.handleError = httpErrorHandler.createHandleError('clientService');
   }
 
-  getClient (): Observable<Client[]> {
-    return this.http.get<Client[]>(this.cadastroUrl)
+  getCadastro (): Observable<Cadastro[]> {
+    return this.http.get<Cadastro[]>(this.cadastroUrl)
       .pipe(
-        catchError(this.handleError('getClient', []))
+        catchError(this.handleError('getCadastro', []))
       );
   }
 
-  searchClient(term: string): Observable<Client[]> {
+  searchCadastro(term: string): Observable<Cadastro[]> {
     term = term.trim();
 
     const options = term ?
      { params: new HttpParams().set('nome', term) } : {};
 
-    return this.http.get<Client[]>(this.cadastroUrl, options)
+    return this.http.get<Cadastro[]>(this.cadastroUrl, options)
       .pipe(
-        catchError(this.handleError<Client[]>('searchCadastro', []))
+        catchError(this.handleError<Cadastro[]>('searchCadastro', []))
       );
   }
 
   //////// Save methods //////////
 
-  addCadastro (cadastro: Client): Observable<Client> {
-    return this.http.post<Client>(this.cadastroUrl, cadastro, httpOptions)
+  addCadastro (cadastro: Cadastro): Observable<Cadastro> {
+    return this.http.post<Cadastro>(this.cadastroUrl, cadastro, httpOptions)
       .pipe(
         catchError(this.handleError('addCadastro', cadastro))
       );
@@ -66,11 +66,11 @@ export class ClientService {
       );
   }
 
-  updateCadastro (cadastro: Client): Observable<Client> {
+  updateCadastro (cadastro: Cadastro): Observable<Cadastro> {
     httpOptions.headers =
       httpOptions.headers.set('Authorization', 'my-new-auth-token');
 
-    return this.http.put<Client>(this.cadastroUrl, cadastro, httpOptions)
+    return this.http.put<Cadastro>(this.cadastroUrl, cadastro, httpOptions)
       .pipe(
         catchError(this.handleError('updateCadastro', cadastro))
       );

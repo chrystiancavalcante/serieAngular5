@@ -25,6 +25,7 @@ import { httpInterceptorProviders } from './http-interceptors/index';
 import { AuthService } from './auth.service';
 import { RequestCache, RequestCacheWithMap } from './request-cache.service';
 import { HttpClientXsrfModule } from '@angular/common/http';
+import { ClientService } from './client-form/client.service';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,7 @@ import { HttpClientXsrfModule } from '@angular/common/http';
       )
   ],
 
-  providers: [SystemService, MessageService, AuthService,
+  providers: [SystemService, ClientService, MessageService, AuthService,
     HttpErrorHandler,
     { provide: RequestCache, useClass: RequestCacheWithMap },
     httpInterceptorProviders],

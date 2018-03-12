@@ -12,9 +12,9 @@ import { CadastroService } from './cadastro.service';
 export class CadastroComponent implements OnInit {
   [x: string]: any;
   
-  Cadastro: Cadastro[]
+  cadastro: Cadastro[]
   editCadastro: Cadastro;
-  title= "Lista de Clientes"
+  title= "Cadastro"
 
   constructor(private cadastroService: CadastroService) { 
 

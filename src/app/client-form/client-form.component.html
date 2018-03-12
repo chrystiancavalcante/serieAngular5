@@ -9,7 +9,7 @@
           <div class="row">
             <div class="col-8">
               <label class="for">Nome</label>
-              <input [(ngModel)]="model.nome" name="nome" value="nome" id="nome" type="text" class="form-control" required  placeholder="Nome" #clientNome="ngModel">
+              <input [(ngModel)]="model.nome" name="nome" value="nome" id="nome" type="text" class="form-control" required  placeholder="Nome" #Nome="ngModel">
               <div [hidden]="nome.valid || nome.pristine" class="alert alert-danger">
                 O Nome é necessário.
               </div>
@@ -17,7 +17,7 @@
 
             <div class="col-4">
               <label class="for">CEP</label>
-              <input [(ngModel)]="model.cep" name="cep" id="cep" value="cep" size="10" maxlength="9" class="form-control" type="text" placeholder="*Digite o CEP"
+              <input [(ngModel)]="model.cep" name="cep" id="cep" value="cep" size="10" maxlength="9" class="form-control" type="text" placeholder="Digite o CEP"
                 ng-pattern="/^\d{5}-\d{3}$/" required #cep="ngModel">
               <div [hidden]="cep.valid || cep.pristine" class="alert alert-danger">
                 O CEP é necessário.
@@ -25,7 +25,7 @@
             </div>
             <div class="col-5">
               <label class="for">Estado</label>
-              <input [(ngModel)]="model.uf" name="uf" class="form-control input" value="uf" id="uf" size="2" placeholder="*Estado" required #uf="ngModel">
+              <input [(ngModel)]="model.uf" name="uf" class="form-control input" value="uf" id="uf" size="2" placeholder="Estado" required #uf="ngModel">
               <div [hidden]="uf.valid || uf.pristine" class="alert alert-danger">
                 O Estado é necessário.
               </div>
